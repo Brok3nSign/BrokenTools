@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <title>BrokenHud — Changelog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <nav>
+    <a href="index.html">Instrukcja</a> | 
+    <a href="features.html">Funkcje</a> | 
+    <a href="changelog.html">Changelog</a>
+  </nav>
+
+  <h1>BrokenHud — Lista zmian</h1>
+  <h2>Wersja 1.2 — 2025-09-01</h2>
+  Ponieważ dodałem wszystkie instancje w aplikacji (poza Gawrą) plik instances.json jest już niepotrzebny, jeżeli wprowadzałeś/aś dużo zmian w tym pliku (lub w konfigracji instancji w apce), to zrób poprawki raz jeszcze w aplikacji.
+  <h3>Nowe funkcje</h3>
+  <ul>
+    <li><b>Konfigurowalne HUD-y</b> — od teraz każdy wiersz w oknie sesji, oknie instancji i oknie walki może być włączony i wyłączony zgodnie z Twoimi preferencjami. Konfiguracja → Zawartość HUD-a.</li>
+    <li><b>Przychód i Wejściówki</b> — do HUD-a doszły dwie dodatkowe informacje (Przychód i Wejściówki), czyli składowe zysku.</li>
+    <li><b>Autoodświeżanie Podsumowania</b> — teraz po zmianie dat okno podsumowania powinno odświeżyć się samo.</li>
+    <li><b>Selena i Adek na dwa razy</b> — instancja Seleny i Admirała będzie zamykana po ostatniej walce nawet, jeżeli ubijecie ich na dwa razy.</li>
+    <li><b>Przenieś okno pod PPM</b> — okno można teraz przenosić również z poziomu PPM. Wystarczy wybrać opcję „Przenieś” i przeciągnąć okno w docelowe miejsce.</li>
+    <li><b>Zabezpieczenie przed duplikatami walk</b> — dodano dodatkowe zabezpieczenie, które odrzuca walkę, jeśli w ciągu sekundy pojawiła się w bazie inna z dokładnie tymi samymi wartościami.</li>
+    <li><b>Zabezpieczenie przed otwarciem aplikacji dwa razy</b> — aplikacja wyszukuje stary proces i go ubija przed otwarciem nowego.</li>
+    <li><b>Obsługa Statku Utoru, Robaczych jaskiń, Sali czujek i Losek</b> — w przypadku tych instancji aplikacja miała różne problemy (nie rozróżniała wersji konstrukta, komandora od admirała, tworzyła zbędne instancje w drodze na modliszkę i wszystkie 3 insty Losek zapisywała pod tą samą nazwą). Zostało to zmienione. Dodatkowo instancja Ichtiona dostała lepszą nazwę. Zmiana poprawi również w miarę możliwości wpisy w bazie (jeśli instancja była wyczyszczona).</li>
+    <li><b>Przeniesienie konfiguracji instancji do bazy</b> — do tej pory instancje były zapisywane w pliku instances.json. Teraz wszystkie informacje są w bazie, dodatkowo zostały dodane wszystkie instancje (poza Gawrą). Pojawił się też tier 0 (dla amorfy, bo tworzy instancję, ale jest czempionem).</li>
+    <li><b>Trzeci dropdown z tierem w konfiguracji instancji</b> — w oknie konfiguracji instancji dodano trzeci dropdown z tierem, aby dropdowny nie były za długie.</li>
+  </ul>
+  <h3>Fixy</h3>
+  <ul>
+    <li><b>Full debug</b> — dodanie flagi full debug w konfiguracji (Konfiguracja → Rozwiązywanie problemów), która generuje bardzo obszerne logi do pliku tekstowego. Potrzebne tylko w sytuacjach, gdy coś nie działa.</li>
+    <li><b>Zerowanie wartości w Fight Window</b> — na starcie walki okno powinno już zerować wartości.</li>
+    <li><b>Znikanie okna po zminimalizowaniu i zamknięciu</b> — minimalizowanie okna powodowało, że koordynaty w config.json ustawiały się na wartości typu -32000. Teraz to nie powinno mieć miejsca.</li>
+    <li><b>Reset ustawień karty sieciowej</b> — usunięto dropdown z protokołem, a do sekcji „Rozwiązywanie problemów” dodano przycisk resetu ustawień karty sieciowej.</li>
+  </ul>
+
+  <h2>Wersja 1.1 — 2025-08-30</h2>
+  <ul>
+    <li><b>Ekran edycji rarów</b> — możliwość ręcznego ustawienia cen.</li>
+    <li><b>Ekran edycji cen przedmiotów</b> — blokowanie i zmiana cen oraz nazw „Unknown”.</li>
+    <li><b>Synergetyki</b> — zapis dropów, opcja pokazywania w loocie i podsumowaniach.</li>
+    <li><b>Ceny inhibitorów</b> — checkbox do przeliczania wg paczek platyny (50).</li>
+    <li><b>Fight Window</b> — możliwość blokady okna.</li>
+    <li><b>Bystre tooltipy</b> — inteligentne ustawienie po lewej/prawej stronie ekranu.</li>
+    <li><b>Zamykanie instancji</b> — poprawiony czas końcowy (od podsumowania).</li>
+    <li><b>Obsługa serwerów Wyvern i Thalia</b> — na razie w polskiej wersji klienta.</li>
+    <li><b>Instance Window</b> — możliwość blokady okna.</li>
+    <li><b>Session Window</b> — opcja zwijania (double click na „Sesja”).</li>
+    <li><b>Liczenie dropów na tierze</b> — poprawione dla Tarula, Morany, Fyodora.</li>
+  </ul>
+</body>
+</html>

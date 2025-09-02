@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <title>BrokenHud — Instrukcja instalacji</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <nav>
+    <a href="index.html">Instrukcja</a> |
+    <a href="features.html">Funkcje</a> |
+    <a href="changelog.html">Changelog</a>
+  </nav>
+
+  <div class="info">
+    Nowa wersja BrokenHud 1.2 już dostępna! 🎉 Sprawdź listę zmian w zakładce Changelog.
+  </div>
+
+  <h1>BrokenHud — krótka instrukcja</h1>
+
+  <h2>Szybki start</h2>
+  <ol>
+    <li>Zainstaluj <a href="https://npcap.com/#download" target="_blank">Npcap</a> (wersja „Npcap 1.83 installer for Windows”).  
+        Zaznacz opcję <i>Install Npcap in WinPcap API-compatible Mode</i>.</li>
+    <li>Wypakuj <a href="https://drive.google.com/file/d/11AIjWG-xLID6pY9aSekhVEnhH5qefjWV/view?usp=sharing" target="_blank">archiwum ZIP (1.2)</a> do jednego folderu.  </li>
+    <li>Po uruchomieniu aplikacja utworzy dodatkowe pliki (<code>config.json</code>, <code>data.db</code>). Jeżeli migrujesz z poprzedniej wersji to skopiuj te dwa pliki z poprzedniej wersji!!</li>
+    <li>W aplikacji wybierz kartę sieciową, przez którą przechodzi ruch gry.  
+        <br>👉 Jeśli nie wiesz, która to, otwórz PowerShell i wpisz:
+        <pre><code>Get-NetAdapter | Where-Object Status -eq "Up" | Select-Object Name, InterfaceDescription</code></pre>
+        W wynikach zobaczysz listę aktywnych kart sieciowych. Nazwy/deskrypcje z tej listy znajdziesz także w programie i na ich podstawie wybierzesz właściwy interfejs.</li>
+    <li>Uruchom grę i zaloguj się. Jeśli program poprawnie odczytał serwer i nick — działa prawidłowo.</li>
+    <li><b>Ceny z targowiska:</b> otwórz w grze Targowisko → „Oferty sprzedaży → Przedmioty” oraz „Artefakty (drify i orby)”, aby odświeżyć ceny.</li>
+  </ol>
+
+  <div class="video">
+    <h2>Zobacz wideo</h2>
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/_5FEPh51PSA" 
+      title="BrokenHud — prezentacja funkcji" frameborder="0" allowfullscreen></iframe>
+  </div>
+
+  <div class="info">
+    Jeśli podoba Ci się aplikacja, rozważ <a href="https://buycoffee.to/brok3nsign" target="_blank">postawienie kawy ☕</a>.
+  </div>
+
+  <div class="warning">
+    <b>Uwaga:</b> aplikacja działa wyłącznie w systemie Windows.
+    Ze względu na wykorzystanie Npcap, uruchamianie pod emulacją (np. Wine/Proton) najpewniej się nie powiedzie.
+  </div>
+</body>
+</html>
