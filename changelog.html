@@ -1,41 +1,93 @@
 <!DOCTYPE html>
 <html lang="pl">
+
 <head>
   <meta charset="UTF-8">
   <title>BrokenHud — Changelog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-<nav class="global-nav">
-  <a href="index.html">Instrukcja</a> |
-  <a href="features.html">Funkcje</a> |
-  <a href="changelog.html">Changelog</a> |
-  <a href="security.html">Bezpieczeństwo</a>
-</nav>
+  <nav class="global-nav">
+    <a href="index.html">Instrukcja</a> |
+    <a href="features.html">Funkcje</a> |
+    <a href="changelog.html">Changelog</a> |
+    <a href="security.html">Bezpieczeństwo</a>
+  </nav>
 
   <h1>BrokenHud — Lista zmian</h1>
-  <h2>Wersja 1.2 — 2025-09-01</h2>
-  Ponieważ dodałem wszystkie instancje w aplikacji (poza Gawrą) plik instances.json jest już niepotrzebny, jeżeli wprowadzałeś/aś dużo zmian w tym pliku (lub w konfigracji instancji w apce), to zrób poprawki raz jeszcze w aplikacji.
+  <h2>Wersja 1.3 — 2025-09-03</h2>
+
   <h3>Nowe funkcje</h3>
   <ul>
-    <li><b>Konfigurowalne HUD-y</b> — od teraz każdy wiersz w oknie sesji, oknie instancji i oknie walki może być włączony i wyłączony zgodnie z Twoimi preferencjami. Konfiguracja → Zawartość HUD-a.</li>
-    <li><b>Przychód i Wejściówki</b> — do HUD-a doszły dwie dodatkowe informacje (Przychód i Wejściówki), czyli składowe zysku.</li>
+    <li><b>„Zawsze na wierzchu”</b> — aplikacja zachowuje się jak overlay. Widoczna, gdy Broken Ranks jest aktywne,
+      ukryta za innymi oknami w tle. Uwaga: przy szybkim Alt+Tab może się nie pojawić, wtedy użyj Alt+Tab+Esc.</li>
+    <li><b>Rekonstrukcja menu kontekstowego</b> — pozycje zostały zgrupowane dla wygody.</li>
+    <li><b>Ceny historyczne</b> — pierwsza wersja ekranów do śledzenia cen. Zapis zmian i wykresy dla każdego
+      przedmiotu.</li>
+    <li><b>Przeliczanie cen przedmiotów na złoto</b> — ceny w platynie przeliczane na złoto (po paczkach), w bazie
+      zapisywana mniejsza wartość.</li>
+    <li><b>Sklejone okienka</b> — HUD-y ustawiają się jedno pod drugim, można to wyłączyć dla pełnej dowolności.</li>
+    <li><b>Customizacja HUD-ów</b> — nowe suwaki: szerokość, czcionka, przezroczystość.</li>
+    <li><b>Kolory rarów i syngów</b> — w podsumowaniu i loot window pojawiają się w kolorach jak w grze.</li>
+    <li><b>Edycja artefaktów</b> — widok analogiczny do edycji przedmiotów.</li>
+    <li><b>Ignorowanie przedmiotów</b> — możliwość oznaczenia przedmiotów jako ignorowanych (nie będą widoczne w HUD).
+    </li>
+  </ul>
+
+  <h3>Fixy</h3>
+  <ul>
+    <li><b>Morana i Lugus</b> — instancja Morany czeka teraz na Lugusa. Lugus liczy się do pustych bossów.</li>
+  </ul>
+
+  <h3>Małe usprawnienia</h3>
+  <ul>
+    <li>Centrowanie okien.</li>
+    <li>Przycisk „Zapisz” i „Anuluj” zapamiętuje oryginalny stan.</li>
+    <li>Numer wersji przeniesiony do Konfiguracja → Rozwiązywanie problemów.</li>
+    <li>Nowy link do Discorda (niewygasający).</li>
+    <li>Dodanie linka do strony Broken Tools.</li>
+  </ul>
+
+  <h2>Wersja 1.2 — 2025-09-01</h2>
+  Ponieważ dodałem wszystkie instancje w aplikacji (poza Gawrą) plik instances.json jest już niepotrzebny, jeżeli
+  wprowadzałeś/aś dużo zmian w tym pliku (lub w konfigracji instancji w apce), to zrób poprawki raz jeszcze w aplikacji.
+  <h3>Nowe funkcje</h3>
+  <ul>
+    <li><b>Konfigurowalne HUD-y</b> — od teraz każdy wiersz w oknie sesji, oknie instancji i oknie walki może być
+      włączony i wyłączony zgodnie z Twoimi preferencjami. Konfiguracja → Zawartość HUD-a.</li>
+    <li><b>Przychód i Wejściówki</b> — do HUD-a doszły dwie dodatkowe informacje (Przychód i Wejściówki), czyli składowe
+      zysku.</li>
     <li><b>Autoodświeżanie Podsumowania</b> — teraz po zmianie dat okno podsumowania powinno odświeżyć się samo.</li>
-    <li><b>Selena i Adek na dwa razy</b> — instancja Seleny i Admirała będzie zamykana po ostatniej walce nawet, jeżeli ubijecie ich na dwa razy.</li>
-    <li><b>Przenieś okno pod PPM</b> — okno można teraz przenosić również z poziomu PPM. Wystarczy wybrać opcję „Przenieś” i przeciągnąć okno w docelowe miejsce.</li>
-    <li><b>Zabezpieczenie przed duplikatami walk</b> — dodano dodatkowe zabezpieczenie, które odrzuca walkę, jeśli w ciągu sekundy pojawiła się w bazie inna z dokładnie tymi samymi wartościami.</li>
-    <li><b>Zabezpieczenie przed otwarciem aplikacji dwa razy</b> — aplikacja wyszukuje stary proces i go ubija przed otwarciem nowego.</li>
-    <li><b>Obsługa Statku Utoru, Robaczych jaskiń, Sali czujek i Losek</b> — w przypadku tych instancji aplikacja miała różne problemy (nie rozróżniała wersji konstrukta, komandora od admirała, tworzyła zbędne instancje w drodze na modliszkę i wszystkie 3 insty Losek zapisywała pod tą samą nazwą). Zostało to zmienione. Dodatkowo instancja Ichtiona dostała lepszą nazwę. Zmiana poprawi również w miarę możliwości wpisy w bazie (jeśli instancja była wyczyszczona).</li>
-    <li><b>Przeniesienie konfiguracji instancji do bazy</b> — do tej pory instancje były zapisywane w pliku instances.json. Teraz wszystkie informacje są w bazie, dodatkowo zostały dodane wszystkie instancje (poza Gawrą). Pojawił się też tier 0 (dla amorfy, bo tworzy instancję, ale jest czempionem).</li>
-    <li><b>Trzeci dropdown z tierem w konfiguracji instancji</b> — w oknie konfiguracji instancji dodano trzeci dropdown z tierem, aby dropdowny nie były za długie.</li>
+    <li><b>Selena i Adek na dwa razy</b> — instancja Seleny i Admirała będzie zamykana po ostatniej walce nawet, jeżeli
+      ubijecie ich na dwa razy.</li>
+    <li><b>Przenieś okno pod PPM</b> — okno można teraz przenosić również z poziomu PPM. Wystarczy wybrać opcję
+      „Przenieś” i przeciągnąć okno w docelowe miejsce.</li>
+    <li><b>Zabezpieczenie przed duplikatami walk</b> — dodano dodatkowe zabezpieczenie, które odrzuca walkę, jeśli w
+      ciągu sekundy pojawiła się w bazie inna z dokładnie tymi samymi wartościami.</li>
+    <li><b>Zabezpieczenie przed otwarciem aplikacji dwa razy</b> — aplikacja wyszukuje stary proces i go ubija przed
+      otwarciem nowego.</li>
+    <li><b>Obsługa Statku Utoru, Robaczych jaskiń, Sali czujek i Losek</b> — w przypadku tych instancji aplikacja miała
+      różne problemy (nie rozróżniała wersji konstrukta, komandora od admirała, tworzyła zbędne instancje w drodze na
+      modliszkę i wszystkie 3 insty Losek zapisywała pod tą samą nazwą). Zostało to zmienione. Dodatkowo instancja
+      Ichtiona dostała lepszą nazwę. Zmiana poprawi również w miarę możliwości wpisy w bazie (jeśli instancja była
+      wyczyszczona).</li>
+    <li><b>Przeniesienie konfiguracji instancji do bazy</b> — do tej pory instancje były zapisywane w pliku
+      instances.json. Teraz wszystkie informacje są w bazie, dodatkowo zostały dodane wszystkie instancje (poza Gawrą).
+      Pojawił się też tier 0 (dla amorfy, bo tworzy instancję, ale jest czempionem).</li>
+    <li><b>Trzeci dropdown z tierem w konfiguracji instancji</b> — w oknie konfiguracji instancji dodano trzeci dropdown
+      z tierem, aby dropdowny nie były za długie.</li>
   </ul>
   <h3>Fixy</h3>
   <ul>
-    <li><b>Full debug</b> — dodanie flagi full debug w konfiguracji (Konfiguracja → Rozwiązywanie problemów), która generuje bardzo obszerne logi do pliku tekstowego. Potrzebne tylko w sytuacjach, gdy coś nie działa.</li>
+    <li><b>Full debug</b> — dodanie flagi full debug w konfiguracji (Konfiguracja → Rozwiązywanie problemów), która
+      generuje bardzo obszerne logi do pliku tekstowego. Potrzebne tylko w sytuacjach, gdy coś nie działa.</li>
     <li><b>Zerowanie wartości w Fight Window</b> — na starcie walki okno powinno już zerować wartości.</li>
-    <li><b>Znikanie okna po zminimalizowaniu i zamknięciu</b> — minimalizowanie okna powodowało, że koordynaty w config.json ustawiały się na wartości typu -32000. Teraz to nie powinno mieć miejsca.</li>
-    <li><b>Reset ustawień karty sieciowej</b> — usunięto dropdown z protokołem, a do sekcji „Rozwiązywanie problemów” dodano przycisk resetu ustawień karty sieciowej.</li>
+    <li><b>Znikanie okna po zminimalizowaniu i zamknięciu</b> — minimalizowanie okna powodowało, że koordynaty w
+      config.json ustawiały się na wartości typu -32000. Teraz to nie powinno mieć miejsca.</li>
+    <li><b>Reset ustawień karty sieciowej</b> — usunięto dropdown z protokołem, a do sekcji „Rozwiązywanie problemów”
+      dodano przycisk resetu ustawień karty sieciowej.</li>
   </ul>
 
   <h2>Wersja 1.1 — 2025-08-30</h2>
@@ -53,4 +105,5 @@
     <li><b>Liczenie dropów na tierze</b> — poprawione dla Tarula, Morany, Fyodora.</li>
   </ul>
 </body>
+
 </html>
