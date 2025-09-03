@@ -1,0 +1,208 @@
+<!doctype html>
+<html lang="pl">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Bezpieczeństwo aplikacji — informacje dla graczy</title>
+    <link rel="stylesheet" href="style.css" />
+
+</head>
+
+<body>
+    <nav class="global-nav">
+        <a href="index.html">Instrukcja</a> |
+        <a href="features.html">Funkcje</a> |
+        <a href="changelog.html">Changelog</a> |
+        <a href="security.html">Bezpieczeństwo</a>
+    </nav>
+
+    <h1>Bezpieczeństwo aplikacji</h1>
+    <p class="info">
+        Na tej stronie opisuję, jak działa moja aplikacja, jakie dane przetwarza i jakie praktyki bezpieczeństwa
+        stosuję.
+    </p>
+
+    <nav class="local-nav">
+        <a href="#jak-dziala">Jak działa aplikacja</a>
+        <a href="#wymagania">Uprawnienia i wymagania</a>
+        <a href="#dane">Jakie dane przetwarzam</a>
+        <a href="#prywatnosc">Prywatność i przechowywanie</a>
+        <a href="#exe">Pojedynczy plik .exe</a>
+        <a href="#podpis">Podpis cyfrowy</a>
+        <a href="#zgodnosc">Zgodność z regulaminem gry</a>
+        <a href="#faq">FAQ</a>
+    </nav>
+
+    <h2 id="jak-dziala">Jak działa aplikacja <span class="badge">C# + Npcap</span></h2>
+    <div class="grid grid-2">
+        <div class="card">
+            <h3>Przechwytywanie tylko pakietów z serwera gry</h3>
+            <p>
+                Aplikacja jest napisana w C# i wykorzystuje <strong>Npcap</strong> wyłącznie do <em>pasywnego
+                    odbioru</em> pakietów
+                sieciowych <strong>wysyłanych z serwera gry do klienta gry</strong> zainstalowanego na komputerze.
+            </p>
+            <ul>
+                <li>Nie modyfikuję żadnych pakietów.</li>
+                <li>Nie wstrzykuję niczego do procesu gry.</li>
+                <li>Nie wysyłam pakietów w imieniu użytkownika.</li>
+            </ul>
+        </div>
+        <div class="card">
+            <h3>Selekcja i zapis informacji</h3>
+            <p>
+                Z odebranych pakietów odczytywane są <em>wyłącznie</em> istotne informacje dotyczące zdarzeń w grze
+                (np. czas walki, łupy, nazwy instancji). Dane te zapisuję lokalnie w pliku <code>data.db</code>
+                (SQLite).
+            </p>
+            <ul>
+                <li>Brak ingerencji w ruch sieciowy.</li>
+                <li>Brak komunikacji wychodzącej do serwerów.</li>
+                <li>Pełna przejrzystość – baza jest dostępna w każdej chwili.</li>
+            </ul>
+        </div>
+    </div>
+
+    <h2 id="wymagania">Uprawnienia i wymagania</h2>
+    <ul>
+        <li><strong>Npcap</strong> — komponent do przechwytywania pakietów (tryb tylko-do-odczytu).</li>
+        <li><strong>Dostęp do interfejsu sieciowego</strong> — aby odczytać pakiety przychodzące do klienta gry.</li>
+        <li><strong>Dostęp do zapisu plików</strong> — aby utworzyć/aktualizować lokalny plik bazy <code>data.db</code>.
+        </li>
+    </ul>
+    <p class="warning">
+        Te uprawnienia są <em>niezbędne</em> do działania HUD-u/statystyk. Aplikacja nie korzysta z żadnych uprawnień,
+        które umożliwiałyby zdalną kontrolę lub modyfikację ruchu sieciowego.
+    </p>
+
+    <h2 id="dane">Jakie dane przetwarzam (a jakich nie)</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Zakres</th>
+                <th>Co jest zapisywane</th>
+                <th>Uwagi</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Statystyki gry</td>
+                <td>Informacje wynikające z pakietów gry: np. czas rozpoczęcia/końca walk, nazwy instancji, łupy,
+                    wartości liczbowe.</td>
+                <td class="ok">Tylko dane niezbędne do działania funkcji aplikacji.</td>
+            </tr>
+            <tr>
+                <td>Dane systemowe</td>
+                <td>
+                    Nie zbieram danych identyfikujących urządzenie
+                    (brak numerów seryjnych, listy procesów, plików, itp.).
+                    Jedyny wyjątek: aplikacja sprawdza, czy okno gry jest aktualnie aktywne
+                    (na wierzchu), aby wyświetlać overlay tylko wtedy, gdy grasz.
+                </td>
+                <td class="ok">Minimalne sprawdzanie stanu aktywnego okna.</td>
+            </tr>
+            <tr>
+                <td>Treści prywatne</td>
+                <td>Brak. Nie czytam ani nie zapisuję żadnych prywatnych plików, haseł czy wiadomości.</td>
+                <td class="ok">Prywatność użytkownika pozostaje nienaruszona.</td>
+            </tr>
+            <tr>
+                <td>Transfer na zewnątrz</td>
+                <td><strong>Żadne</strong> dane nie są wysyłane poza komputer.</td>
+                <td class="ok">Brak połączeń wychodzących.</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2 id="prywatnosc">Prywatność i przechowywanie danych</h2>
+    <ul>
+        <li>Wszystko, co aplikacja zbiera, zapisywane jest lokalnie do pliku <code>data.db</code> (SQLite).</li>
+        <li>Plik <code>data.db</code> jest zawsze dostępny — można go skopiować, zrobić backup, przejrzeć narzędziem do
+            SQLite.</li>
+        <li>Chcesz wyczyścić dane? Zamknij aplikację i usuń <code>data.db</code> — przy kolejnym uruchomieniu plik
+            zostanie utworzony na nowo.</li>
+    </ul>
+
+    <h2 id="exe">Pojedynczy plik <code>.exe</code> (self-contained)</h2>
+    <p>
+        Dla wygody aplikacja jest dystrybuowana jako jeden plik wykonywalny <code>.exe</code>
+        (tzw. self-contained, single-file). Dzięki temu nie musisz doinstalowywać dodatkowych bibliotek — wszystko jest
+        spakowane w środku.
+    </p>
+    <details>
+        <summary>Dlaczego systemy bezpieczeństwa czasem ostrzegają takie pliki?</summary>
+        <p>
+            Duże, samorozpakowujące się pliki <code>.exe</code> bywają traktowane ostrożnie przez oprogramowanie
+            antywirusowe.
+            Może to skutkować <em>fałszywymi alarmami</em>, mimo że aplikacja nie wykonuje żadnych złośliwych działań.
+            Staram się minimalizować ryzyko fałszywych detekcji poprzez przewidywalny proces budowania i przejrzystość
+            kodu.
+        </p>
+    </details>
+
+    <h2 id="podpis">Podpis cyfrowy (code signing)</h2>
+    <p>
+        Aplikacja <strong>nie jest podpisana cyfrowo</strong> — zakup i utrzymanie certyfikatu to istotny koszt.
+        Brak podpisu może skutkować ostrzeżeniami SmartScreen lub koniecznością ręcznego potwierdzenia uruchomienia.
+    </p>
+    <ul>
+        <li>Brak podpisu <em>nie</em> oznacza, że aplikacja jest złośliwa; oznacza tylko, że nie powiązałem jej z
+            tożsamością organizacji wydającej certyfikat.</li>
+        <li>Jeśli w przyszłości podpis cyfrowy stanie się możliwy kosztowo, rozważę jego wdrożenie.</li>
+    </ul>
+
+    <h2 id="zgodnosc">Zgodność z regulaminem gry</h2>
+    <p>
+        Oprócz zachowania zasad bezpieczeństwa ważne jest również, aby aplikacja była zgodna z regulaminem gry.
+        W tej sprawie komunikowałem się bezpośrednio z administracją poprzez oficjalny support.
+        Nie mogę udostępniać screenshotów rozmów, ponieważ zabrania tego regulamin, natomiast publiczne potwierdzenie
+        znajdziesz na oficjalnym Discordzie gry:
+    </p>
+    <p class="info">
+        👉 <a href="https://discord.com/channels/819134581188984843/819152743682801675/1411423114675359774"
+            target="_blank">
+            Statement Administratora na Discordzie</a>
+    </p>
+
+
+    <h2 id="faq">FAQ — bezpieczeństwo</h2>
+
+    <h3>Czy aplikacja może modyfikować ruch sieciowy lub „sterować” grą?</h3>
+    <p><strong>Nie.</strong> Aplikacja pasywnie odczytuje pakiety przychodzące <em>z serwera gry do klienta</em> i
+        niczego nie modyfikuje.</p>
+
+    <h3>Czy aplikacja wysyła jakiekolwiek dane na zewnątrz?</h3>
+    <p><strong>Nie.</strong> Dane nie opuszczają komputera. Wszystko ląduje w <code>data.db</code>.</p>
+
+    <h3>Czy mogę zajrzeć do bazy <code>data.db</code>?</h3>
+    <p>Tak. To zwykła baza SQLite — możesz użyć dowolnego narzędzia do jej odczytu.</p>
+
+    <h3>Czy aplikacja wymaga uprawnień administratora?</h3>
+    <p>
+        To zależy od ustawienia podczas instalacji <strong>Npcap</strong>.
+        Instalator ma opcję <em>„Allow non-administrators to capture packets”</em> (pozwól na przechwytywanie pakietów
+        bez praw administratora).
+    </p>
+    <ul>
+        <li>Jeśli zaznaczysz ten checkbox — moja aplikacja może działać w trybie zwykłego użytkownika.</li>
+        <li>Jeśli go nie zaznaczysz — aplikacja będzie wymagała uruchamiania z prawami administratora.</li>
+    </ul>
+    <p>
+        Niezależnie od wyboru, <strong>Npcap sam w sobie wymaga praw administratora do instalacji</strong>.
+    </p>
+
+
+    <h3>Jak mogę potwierdzić integralność pobranego pliku?</h3>
+    <p>Porównaj sumę kontrolną pliku z opublikowaną na stronie wydania:</p>
+    <ul>
+        <li>PowerShell: <code>Get-FileHash .\TwojPlik.exe -Algorithm SHA256</code></li>
+        <li>CMD: <code>certutil -hashfile TwojPlik.exe SHA256</code></li>
+    </ul>
+
+    <footer>
+        Masz pytania dotyczące bezpieczeństwa? Napisz do mnie — chętnie odpowiem i rozwinę dokument.
+    </footer>
+</body>
+
+</html>
