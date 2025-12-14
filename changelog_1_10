@@ -1,0 +1,74 @@
+## Kluczowe zmiany w aplikacji
+- Wprowadzenie dwóch modeli wyceny przedmiotów:
+  - aktualne ceny z rynku
+  - ceny z momentu zdobycia przedmiotu
+- Instancje identyfikowane po ID zamiast nazw — poprawne liczenie serii rarów niezależnie od języka gry
+
+## Ogólne
+- Możliwość rozszerzania i zwężania HUD-ów poprzez przeciąganie prawej krawędzi okna
+- Optymalizacja startu aplikacji — skrypty porządkowe nie uruchamiają się automatycznie
+- Liczne optymalizacje przetwarzania danych, większość ekranów powinna się ładować natychmiast, przy większym zakresie danych (ponad miesiąc do kilku sekund)
+
+## Okno sesji
+- Dodana godzina
+- PPM → Resetowanie serii bez rara  
+  (do sytuacji, gdy rar nie został poprawnie zczytany, spadł na mobilce lub bez HUD-a)
+- PPM → Zawartość (szybkie włączanie i wyłączanie pól)
+- PPM → Ustaw czas sesji  
+  - możliwość zapisania domyślnej godziny startu dnia po wyborze zakresu (dziś / tydzień)
+
+### Zestawienie instancji
+- Nowy łączony tooltip na polach: Instancje, Psycho, Zysk, Złoto, Exp
+- Zbiorcza tabela zysków z podziałem na instancje
+- Dodana pozycja „Bez instancji”
+
+### Seria bez rara
+- Dodana kolumna ze średnią długością serii
+- Kolorowanie aktualnej serii (powyżej / poniżej średniej)
+- Wyświetlanie długości 5 ostatnich serii
+
+## Okno instancji
+- PPM → Zawartość (szybkie włączanie i wyłączanie pól)
+- PPM → Autoukrywanie (szybki checkbox)
+
+### Średnia z instancji
+- Wyświetlanie wyników z ostatnich 5 instancji o tej samej nazwie i poziomie trudności
+- Kolorowanie czasu względem średniej
+
+## Okno walki
+- PPM → Zawartość (szybkie włączanie i wyłączanie pól)
+- PPM → Autoukrywanie (szybki checkbox)
+
+## Analizator
+- Zapisywanie pozycji okna w konfiguracji
+- Możliwość zmiany pozycji okna z poziomu konfiguracji
+
+### Start
+- Widok startowy w formie prostego placeholdera
+- Brak automatycznego ładowania danych po uruchomieniu aplikacji
+- Przestrzeń wypełniona podstawowymi statystykami o bazie
+
+### Podsumowanie
+- Dane przeliczane automatycznie
+
+### Statystyki
+- Dane przeliczane automatycznie
+
+### Rynek
+- Możliwość przełączenia wykresu na świecowy
+- Grupowanie danych: dzienne, tygodniowe i miesięczne
+
+### Historia
+- Możliwość usuwania wielu instancji lub walk jednocześnie
+- Okno potwierdzające operację
+- Opcja usunięcia wszystkich walk przypisanych do instancji
+
+## Konfiguracja
+- Wyświetlanie:
+  - tylko nick gracza (bez serwera)
+  - włączenie / wyłączenie tooltipu drużyny
+- Dane:
+  - ręczne uruchamianie skryptów porządkowych  
+    (naprawa brakujących lub błędnych danych)
+- UI:
+  - liczne zmiany kosmetyczne w układzie kontrolek (wersja robocza)
